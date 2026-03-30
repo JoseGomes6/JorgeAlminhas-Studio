@@ -1,0 +1,259 @@
+/* JORGE ALMINHAS STUDIO - GALERIA EDITORIAL 
+   CSS Consolidado - v2.0
+*/
+
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@200;400;600&display=swap");
+
+/* --- RESET & ESTRUTURA DE SCROLL --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* O "display: block" e "height: auto" são fundamentais para o título não ficar preso */
+body.interna-body {
+  background-color: #ffffff !important;
+  font-family: "Inter", sans-serif;
+  color: #1a1a1a;
+  display: block !important;
+  height: auto !important;
+  min-height: 100vh;
+  overflow-y: auto !important;
+  overflow-x: hidden;
+  position: relative;
+  line-height: 1.6;
+}
+
+/* --- BOTÃO VOLTAR --- */
+.back-btn {
+  position: fixed;
+  top: 40px;
+  left: 40px;
+  z-index: 1000;
+  text-decoration: none;
+  color: #000000 !important; /* Preto puro como a navbar */
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 3px; /* Aumentado para bater com o estilo editorial */
+  padding: 15px 30px;
+
+  /* --- EFEITO GLASSMORPHISM (IGUAL À NAVBAR) --- */
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(15px) !important;
+  -webkit-backdrop-filter: blur(15px);
+
+  /* Borda muito subtil */
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* --- ANIMAÇÃO DE HOVER (ESTILO EDITORIAL) --- */
+.back-btn::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: 8px; /* Linha interna ao botão */
+  left: 50%;
+  background-color: #000;
+  transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+  transform: translateX(-50%);
+}
+
+.back-btn:hover {
+  background: rgba(
+    255,
+    255,
+    255,
+    0.4
+  ) !important; /* Fica ligeiramente mais visível */
+  letter-spacing: 5px; /* Expande como os outros links */
+  color: #000;
+}
+
+.back-btn:hover::after {
+  width: 40%; /* A linha cresce por baixo do texto "VOLTAR" */
+}
+
+/* --- HEADER DA GALERIA (O TITULO) --- */
+.gallery-header {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 160px 20px 80px;
+  text-align: center;
+  display: block !important;
+  position: relative !important;
+}
+
+.category {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: #999999;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.gallery-header h1 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(40px, 8vw, 75px);
+  font-style: italic;
+  font-weight: 400;
+  margin: 15px 0;
+  line-height: 1.1;
+  color: #1a1a1a;
+}
+
+.description {
+  font-size: 14px;
+  color: #666666;
+  max-width: 550px;
+  margin: 0 auto;
+}
+
+.location {
+  margin-top: 20px;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+/* --- MASONRY GRID --- */
+.masonry-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  grid-auto-rows: 400px;
+  gap: 30px;
+  padding: 0 40px;
+  max-width: 1600px;
+  margin: 0 auto 120px;
+}
+
+.grid-item {
+  overflow: hidden;
+  background: #fcfcfc;
+  position: relative;
+}
+
+.grid-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.grid-item:hover img {
+  transform: scale(1.06);
+}
+
+/* Variações de Grelha */
+.tall {
+  grid-row: span 2;
+}
+.wide {
+  grid-column: span 2;
+}
+
+/* --- SECÇÃO CTA (RESERVAR DATA) --- */
+/* --- SECTION GALLERY CTA --- */
+.gallery-cta {
+  padding: 120px 40px; /* Muito espaço para respirar */
+  background-color: #ffffff;
+  text-align: center;
+  border-top: 1px solid #f5f5f5;
+}
+
+.cta-wrapper {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.cta-subtitle {
+  display: block;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  color: #999;
+  margin-bottom: 20px;
+}
+
+.cta-title {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(32px, 5vw, 48px);
+  font-style: italic;
+  font-weight: 300;
+  color: #1a1a1a;
+  margin-bottom: 40px;
+  letter-spacing: 1px;
+}
+
+/* --- BOTÃO RESERVAR (ESTILO EDITORIAL) --- */
+.btn-book {
+  display: inline-block;
+  text-decoration: none;
+  color: #fff;
+  background-color: #000;
+  padding: 18px 45px;
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+  border: 1px solid #000;
+}
+
+.btn-book:hover {
+  background-color: transparent;
+  color: #000;
+  letter-spacing: 6px; /* Efeito de expansão no hover */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .gallery-cta {
+    padding: 80px 25px;
+  }
+  .cta-title {
+    font-size: 28px;
+  }
+}
+
+/* --- AJUSTE FOOTER PARA PÁGINAS INTERNAS --- */
+.main-footer {
+  width: 100%;
+  background: #ffffff;
+  padding: 100px 60px 40px;
+  border-top: 1px solid #f0f0f0;
+  position: relative;
+  z-index: 10;
+  scroll-snap-align: none !important; /* Remove o snap da Home */
+}
+
+/* --- MOBILE RESPONSIVO --- */
+@media (max-width: 850px) {
+  .masonry-grid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 500px;
+    padding: 0 20px;
+    gap: 20px;
+  }
+  .wide,
+  .tall {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+  .back-btn {
+    top: 20px;
+    left: 20px;
+    padding: 10px 18px;
+  }
+  .gallery-header {
+    padding-top: 120px;
+  }
+  .gallery-cta {
+    padding: 80px 20px;
+  }
+}

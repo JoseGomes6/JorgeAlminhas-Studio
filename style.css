@@ -1,0 +1,583 @@
+/* JORGE ALMINHAS STUDIO - V. LUXE 
+   Design: Minimalismo Suíço & Elegância Editorial
+*/
+
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@200;400;600&display=swap");
+
+:root {
+  --primary-color: #1a1a1a;
+  --accent-color: #888;
+  --bg-white: #ffffff;
+  --transition-smooth: all 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* --- RESET & BASE --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-white);
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  color: var(--primary-color);
+  line-height: 1.5;
+  overflow: hidden;
+  opacity: 1;
+  transition: opacity 0.6s ease;
+  animation: pageIn 0.8s ease-out;
+}
+
+body.fade-out {
+  opacity: 0;
+}
+
+@keyframes pageIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- CONTAINER & SCROLL --- */
+.container {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scrollbar-width: none;
+}
+
+.container::-webkit-scrollbar {
+  display: none;
+}
+
+/* --- NAVBAR EDITORIAL --- */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 35px 60px;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  transition: var(--transition-smooth);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1800px;
+  margin: 0 auto;
+}
+
+header nav a {
+  position: relative;
+  text-decoration: none;
+  color: #000;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 4px 0;
+  transition: opacity 0.3s ease;
+}
+
+header nav a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: 0;
+  left: 50%;
+  background-color: #000;
+  transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+  transform: translateX(-50%);
+}
+
+header nav a:hover::after,
+header nav a.active::after {
+  width: 100%;
+}
+
+header nav a.active {
+  font-weight: 600;
+}
+.nav-center:hover a:not(:hover) {
+  opacity: 0.3;
+}
+
+.nav-logo-small {
+  font-family: "Playfair Display", serif;
+  font-size: 22px !important;
+  font-weight: 700;
+  letter-spacing: -1px !important;
+}
+
+.nav-center a {
+  margin: 0 20px;
+}
+
+/* --- SEÇÃO HOME --- */
+.home-section {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  scroll-snap-align: start;
+  background-color: var(--bg-white);
+  position: relative;
+  width: 100%;
+  text-align: center;
+}
+
+.logo-center {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main-logo {
+  width: 520px;
+  max-width: 80%;
+  height: auto;
+  filter: grayscale(1);
+  display: block;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.home-subtitle {
+  margin-top: 80px;
+  font-size: 10px;
+  letter-spacing: 6px;
+  color: #888;
+  text-transform: uppercase;
+  font-weight: 300;
+  animation: fadeIn 2s ease-in;
+  width: 100%;
+}
+
+/* --- SEÇÕES PORTFÓLIO --- */
+.portfolio-section {
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  scroll-snap-align: start;
+}
+
+.portfolio-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.3) 0%,
+    rgba(0, 0, 0, 0.1) 50%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
+  z-index: 1;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.content h2 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(40px, 8vw, 80px);
+  font-weight: 300;
+  font-style: italic;
+  color: #fff;
+  letter-spacing: 10px;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  text-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.section-tagline {
+  font-family: "Inter", sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0 auto 35px;
+  max-width: 500px;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+.btn-view {
+  display: inline-block;
+  color: #fff;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 12px 35px;
+  font-size: 9px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  transition: var(--transition-smooth);
+}
+
+.btn-view:hover {
+  background: #fff;
+  color: #000;
+}
+
+/* --- SECÇÃO SOBRE MIM --- */
+.about-section {
+  min-height: 100vh;
+  padding: 120px 60px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  scroll-snap-align: start;
+}
+
+.about-container {
+  max-width: 1100px;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.about-image img {
+  width: 100%;
+  height: auto;
+  filter: grayscale(100%); /* PRETO E BRANCO GLOBAL (PC E MOBILE) */
+  box-shadow: 20px 20px 0px #f9f9f9;
+}
+
+.about-text span {
+  font-size: 9px;
+  letter-spacing: 5px;
+  color: #999;
+  text-transform: uppercase;
+}
+
+.about-text h2 {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 48px;
+  font-weight: 300;
+  margin: 20px 0;
+  color: #1a1a1a;
+}
+
+.about-text p {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  line-height: 2;
+  color: #444;
+  margin-bottom: 25px;
+  font-weight: 300;
+}
+
+/* --- SECÇÃO DE MARCAÇÕES --- */
+.contact-section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  scroll-snap-align: start;
+  padding: 120px 40px 0;
+  background-color: #fff;
+}
+
+.contact-container {
+  max-width: 700px;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.contact-container h2 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(32px, 5vw, 45px);
+  font-style: italic;
+  font-weight: 300;
+  margin-bottom: 15px;
+}
+
+/* Aplica isto ao parágrafo da secção de marcações */
+.contact-container p {
+  font-family: "Inter", sans-serif;
+  font-size: 11px; /* Tamanho pequeno para look editorial */
+  font-weight: 300; /* Mais leve/fino */
+  letter-spacing: 2px; /* Espaçamento para elegância */
+  text-transform: uppercase; /* Mantém em maiúsculas para autoridade */
+  color: #888; /* Cinza suave para não gritar mais que o título */
+  line-height: 1.8;
+  max-width: 500px; /* Limita a largura para não cansar a vista */
+  margin: 0 auto 40px; /* Centraliza e dá espaço para o formulário */
+}
+
+.booking-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 30px;
+  text-align: left;
+}
+
+.full-width {
+  grid-column: span 2;
+}
+
+.field-wrapper label {
+  font-size: 8px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #bbb;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.booking-form input,
+.booking-form select,
+.booking-form textarea {
+  width: 100%;
+  padding: 10px 0;
+  border: none;
+  border-bottom: 1px solid #eee;
+  background: transparent;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  outline: none;
+}
+
+.btn-submit {
+  background: #000;
+  color: #fff;
+  padding: 18px 80px;
+  border: none;
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.4s;
+}
+
+.btn-submit:hover {
+  background: #333;
+  letter-spacing: 6px;
+}
+
+/* --- FOOTER --- */
+.main-footer {
+  width: 100%;
+  padding: 80px 60px 40px;
+  border-top: 1px solid #f0f0f0;
+  margin-top: auto;
+}
+
+.footer-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 40px;
+}
+
+.footer-logo {
+  font-family: "Playfair Display", serif;
+  font-size: 32px;
+  font-weight: 700;
+}
+.footer-tagline {
+  font-size: 12px;
+  color: #666;
+  font-style: italic;
+  margin-top: 5px;
+}
+
+.footer-column h3 {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: #999;
+  margin-bottom: 25px;
+}
+.footer-column ul {
+  list-style: none;
+}
+.footer-column ul li a {
+  text-decoration: none;
+  color: #1a1a1a;
+  font-size: 12px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 20px;
+}
+.social-icons a {
+  color: #1a1a1a;
+  transition: 0.3s;
+}
+.social-icons a:hover {
+  transform: translateY(-3px);
+  color: #999;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 60px;
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: #bbb;
+  border-top: 1px solid #f7f7f7;
+  padding-top: 30px;
+}
+
+/* CSS PARA A ASSINATURA NO SOBRE MIM */
+.about-signature {
+  max-width: 250px;
+  height: auto;
+  margin-bottom: 30px;
+  display: block;
+}
+
+/* Estilo dos Títulos do Sobre Mim */
+.about-header {
+  margin-bottom: 40px;
+}
+
+.about-label {
+  font-size: 9px;
+  letter-spacing: 5px;
+  color: #999;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.about-intro {
+  font-family: "Inter", sans-serif;
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: #1a1a1a;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 0;
+}
+
+.about-signature {
+  max-width: 220px;
+  height: auto;
+  margin-bottom: 30px;
+  display: block;
+}
+
+.contact-details {
+  margin: 15px 0;
+}
+
+.footer-contact-item {
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: #1a1a1a;
+  margin-bottom: 5px;
+  font-weight: 400;
+}
+
+/* Opcional: no mobile, centralizar o texto se o resto do footer estiver centrado */
+@media (max-width: 850px) {
+  .contact-details {
+    text-align: center;
+  }
+}
+
+/* Ajuste Mobile */
+@media (max-width: 850px) {
+  .about-header {
+    text-align: center;
+  }
+  .about-signature {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 850px) {
+  header {
+    padding: 25px 30px;
+  }
+  .nav-center {
+    display: none;
+  }
+
+  /* REORGANIZAÇÃO SOBRE MIM MOBILE */
+  .about-container {
+    display: flex !important;
+    flex-direction: column !important;
+    text-align: center;
+    gap: 30px;
+  }
+
+  /* Ordem 1: Títulos */
+  .about-header {
+    order: 1;
+    margin-bottom: 0;
+  }
+
+  /* Ordem 2: Texto + Assinatura */
+  .about-text {
+    order: 2;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .about-text p {
+    order: 1;
+  }
+
+  .about-signature {
+    order: 2;
+    margin: 20px auto;
+  }
+
+  /* Ordem 3: Foto no fim de tudo */
+  .about-image {
+    order: 3;
+  }
+
+  .about-image img {
+    box-shadow: none;
+    /* O filtro grayscale(100%) já está ativo globalmente acima */
+  }
+
+  .booking-form {
+    grid-template-columns: 1fr;
+  }
+  .full-width {
+    grid-column: span 1;
+  }
+  .footer-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .social-icons {
+    justify-content: center;
+  }
+}
